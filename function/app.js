@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             carousel: [
-                {image:'public/carousel/cs-1.jpg'},
+                {image:'public/carousel/cs1.jpg'},
                 {image:'public/carousel/cs-2.jpg'},
                 {image:'public/carousel/cs-3.jpg'},
                 {image:'public/carousel/cs-4.jpg'},
