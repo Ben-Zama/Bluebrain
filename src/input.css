@@ -28,6 +28,8 @@
   display: none;
 }
 #hamburger {
+  height: 100%;
+  width: 75px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -35,6 +37,7 @@
   align-items: center;
   gap: 10%;
   overflow: visible;
+  background-color: red;
 }
 #hamburger span {
   background-color: #ffd700;
@@ -362,6 +365,9 @@ input[type="submit"] {
 
 /* Medium screens and above */
 @media (min-width: 768px) {
+  #hamburger {
+    width: 125px;
+  }
   #hamburger span {
     height: 7.5%;
     width: 35%;

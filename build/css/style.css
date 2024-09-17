@@ -769,10 +769,6 @@ video {
   width: 33.333333%;
 }
 
-.w-1\/6 {
-  width: 16.666667%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -1121,6 +1117,8 @@ video {
 }
 
 #hamburger {
+  height: 100%;
+  width: 75px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1128,6 +1126,7 @@ video {
   align-items: center;
   gap: 10%;
   overflow: visible;
+  background-color: red;
 }
 
 #hamburger span {
@@ -1508,6 +1507,10 @@ input[type="submit"] {
 /* Medium screens and above */
 
 @media (min-width: 768px) {
+  #hamburger {
+    width: 125px;
+  }
+
   #hamburger span {
     height: 7.5%;
     width: 35%;
