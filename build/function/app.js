@@ -11,34 +11,40 @@ const app = Vue.createApp({
       companyhighlights: [
         {
           image: "resources/companyhighlights/1.png",
-          text: "Agricultural credit advisory",
+          text: "Agricultural project management and institutional capacity development",
         },
         {
           image: "resources/companyhighlights/2.png",
-          text: "Agricultural Finance consultancy",
+          text: "Small holder farmer aggregation",
         },
         {
           image: "resources/companyhighlights/3.png",
-          text: "Risk Assessment and Credit Risk",
+          text: "Production, aggregation, processing, storage and marketing",
         },
         {
           image: "resources/companyhighlights/4.png",
-          text: "Business Incubation and Mentorship",
+          text: "Agricultural value chain Technical Assistance",
         },
         {
           image: "resources/companyhighlights/5.png",
-          text: "Preparing Rural Farmers Readiness to secure loans",
+          text: "Agribusiness Incubation and Mentorship",
         },
         {
           image: "resources/companyhighlights/6.png",
-          text: "Agricultural Project Management",
+          text: "Agricultural Finance consultancy and training",
         },
-        { image: "resources/companyhighlights/7.png", text: "Advocacy" },
-        { image: "resources/companyhighlights/8.png", text: "Research" },
-        { image: "resources/companyhighlights/9.png", text: "Training" },
+        { image: "resources/companyhighlights/7.png", 
+          text: "Agricultural mechanisation services" 
+        },
+        { image: "resources/companyhighlights/8.png", 
+          text: "Farm mapping and data management" 
+        },
+        { image: "resources/companyhighlights/9.png", 
+          text: "Advocacy" 
+        },
         {
           image: "resources/companyhighlights/10.png",
-          text: "Technical Assistance at different levels of the Agricultural value chain",
+          text: "Research, Monitoring and Evaluation",
         },
       ],
       pastwork: [
@@ -91,25 +97,49 @@ const app = Vue.createApp({
             "BlueBrain Agro & Allied Services will ensure full technology deployment as an enabler to efficient and effective project management that enables transparency, and high-quality data for monitoring, evaluation, reporting and development planning. BlueBrain Agro & Allied Services will carry out additional on-site and off-site activities (where required) to produce real-time and human-specific results. In addition, BlueBrain Agro & Allied Services will hold focus groups for data collection, formative assessments, and commentaries from a selected group of rural dwellers from the three zones who will provide feedback on the status, challenges, and potential solutions in the livestock sub-sector. Summative evaluations will be further developed to determine the components that BlueBrain Agro & Allied Services thinks will enhance livestock development in Kaduna state.",
         },
       ],
-      team: [
-        { name: "Ms. Lois B. Sankey", image: "resources/team/image1.jpg" },
-        { name: "Dr. Godswill Egbe", image: "resources/team/image3.jpg" },
-        { name: "Mr. Gerald Umeze", image: "resources/team/image4.jpg" },
-        { name: "Mr. Godson Chika Ohuruogu", image: "resources/team/image5.jpg" },
-        {
-          name: "Alh. Abubakar Kolo Ndakpoto",
-          image: "resources/team/image6.jpg",
+      mteam: [
+        { name: "Lois Sankey",
+          role: "CEO", 
+          image: "resources/team/lois.jpg" 
         },
-        {
-          name: "Professor Elisha Sambo Banake",
-          image: "resources/team/image7.jpg",
+        { name: "Godswill Egbe",
+          role: "Executive Director - Finance and Operations", 
+          image: "resources/team/image3.jpg" 
         },
-        { name: "Mr. Stanley Nwachukwu", image: "resources/team/image8.jpg" },
-        {
-          name: "Dr. Awogbemi Clement Adeyeye",
-          image: "resources/team/image9.jpg",
+        { name: "Gerald Umeze",
+          role: "MEL Specialists", 
+          image: "resources/team/image4.jpg" 
         },
-        { name: "Mrs. Chinwe Ogbonna", image: "resources/team/image2.jpg" },
+        { name: "Abubakar Kolo Ndakpoto",
+          role: "Finance and Marketing specialist", 
+          image: "resources/team/image8.jpg" 
+        },
+        { name: "Stanley Nwachukwu",
+          role: "Project mangement expert", 
+          image: "resources/team/image9.jpg" 
+        },
+      ],
+      bteam: [
+        { name: "Lois Sankey", 
+          role: "Executive chairperson",
+          image: "resources/team/lois.jpg" 
+        },
+        { name: "Nonso Ogbunamiri",
+          role: "Member", 
+          image: "resources/team/nonso.jpg" 
+        },
+        { name: "Prof. Sambo Banake",
+          role: "Member", 
+          image: "resources/team/image7.jpg" 
+        },
+        { name: "Shayet Gani-Ikilama", 
+          role: "Member",
+          image: "resources/team/image1.jpg" 
+        },
+        { name: "Stephanie Ugochukwu",
+          role: "Company Secretary/Legal Adviser", 
+          image: "resources/team/image2.jpg" 
+        },
       ],
     }
   },

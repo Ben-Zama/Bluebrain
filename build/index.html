@@ -208,9 +208,8 @@
                     <div class="m-v-l">
                         <i class="bi bi-dot"></i>
                     </div>
-                    <i class="bi bi-lightbulb text-2xl"></i>
-                    <p class="px-5 lg:px-10">To achieve sustainable development in Nigeria year-on-year through
-                        Agriculture value chain among farmers and helping our clients solve their challenges.</p>
+                    <i style="color: #86a63d;" class="bi bi-lightbulb text-2xl"></i>
+                    <p class="px-5 lg:px-10">To achieve sustainable development in agriculture in the next 10 years, through end-to-end value chain approach.</p>
                 </div>
                 <div class="m-v">
                     <div class="m-v-c">
@@ -220,10 +219,8 @@
                     <div class="m-v-l">
                         <i class="bi bi-dot"></i>
                     </div>
-                    <i class="bi bi-rocket-takeoff text-2xl"></i>
-                    <p class="px-5 lg:px-10">To empower and sustain good agronomic practices in Nigeria's growing
-                        agricultural population through delivery of agricultural financing, financial skills support,
-                        Agribusiness and MSME management within and across the border of Nigeria.</p>
+                    <i style="color: #86a63d;" class="bi bi-rocket-takeoff text-2xl"></i>
+                    <p class="px-5 lg:px-10">To empower and sustain good agronomic practices amongst small holder farmers through provision of the best agricultural services in the communities we serve.</p>
                 </div>
                 <div class="border-top"></div>
                 <div class="border-bottom"></div>
@@ -243,21 +240,46 @@
                 </div>
 
                 <div id="team-carousel" class="team-carousel">
-                    <div v-for="item in team" id="team-person" class="team-person">
+                    <div v-for="item in mteam" id="team-person" class="team-person">
                         <div class="person-image">
                             <img class="w-full h-full object-cover" :src="item.image">
                         </div>
                         <div class="person-about">
-                            <p class="font-bold font-sub-head md:text-xl text-center">{{item.name}}</p>
-                            <div class="w-full flex justify-evenly text-xl">
-                                <a :href="item.twitter"><i
-                                        class="bi bi-twitter-x hover:text-primary cursor-pointer"></i></a>
-                                <a :href="item.linkedin"><i
-                                        class="bi bi-linkedin hover:text-primary cursor-pointer"></i></a>
-                            </div>
+                            <p class="font-bold font-sub-head text-lg md:text-xl text-center">{{item.name}}</p>
+                            <p class="font-body text-center text-base md:text-lg text-primary">{{ item.role }}</p>
                         </div>
                     </div>
                     <div id="team-dots-container">
+                        <!-- Dots will be generated dynamically -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Board Team -->
+
+            <div class="team bteam">
+
+                <div class="team-header">
+                    <div class="team-logo">
+                        <img src="resources/board-icon.png">
+                    </div>
+                    <p class="font-bold font-head text-2xl md:text-3xl lg:text-4xl text-center">Board
+                    <span class="text-primary">Team</span></p>
+                </div>
+
+                <div id="bteam-carousel" class="team-carousel">
+                    <div v-for="item in bteam" id="bteam-person" class="bteam-person">
+                        <div class="person-image">
+                            <img class="w-full h-full object-cover" :src="item.image">
+                        </div>
+                        <div class="person-about">
+                            <p class="font-bold font-sub-head text-lg md:text-xl text-center">{{item.name}}</p>
+                            <p class="font-body text-center text-base md:text-lg text-primary">{{ item.role }}</p>
+                        </div>
+                    </div>
+                    <div id="bteam-dots-container">
                         <!-- Dots will be generated dynamically -->
                     </div>
 

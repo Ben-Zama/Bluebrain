@@ -198,7 +198,97 @@ document.addEventListener("DOMContentLoaded", () => {
     intervalId = setInterval(() => {
       currentIndex = (currentIndex + 1) % Math.ceil(slideCount / itemsPerSlide)
       showPerson(currentIndex)
-    }, 5000) // Change slide every 3 seconds
+    }, 5000)
+  }
+
+  function restartCarousel() {
+    clearInterval(intervalId)
+    startCarousel()
+  }
+
+  function onResize() {
+    itemsPerSlide = getItemsPerSlide()
+    createTeamDots() // Recreate dots based on the new number of items per slide
+    showPerson(currentIndex) // Show the correct items based on the new number of items per slide
+  }
+
+  // Initial setup
+  createTeamDots()
+  startCarousel()
+
+  // Recalculate on resize
+  window.addEventListener("resize", onResize)
+})
+
+// Board team autoscroll
+
+document.addEventListener("DOMContentLoaded", () => {
+  const people = document.querySelectorAll(".bteam-person")
+  const teamdotscontainer = document.getElementById("bteam-dots-container")
+
+  let currentIndex = 0
+  let itemsPerSlide = getItemsPerSlide()
+  const slideCount = people.length
+  let intervalId
+
+  function getItemsPerSlide() {
+    // Determine the number of items per slide based on the viewport width
+    if (window.innerWidth >= 992) {
+      return 3 // Large screens
+    } else if (window.innerWidth >= 768) {
+      return 2 // Medium screens
+    } else {
+      return 1 // Small screens
+    }
+  }
+
+  function showPerson(index) {
+    // Hide all items
+    people.forEach((slide, i) => {
+      slide.classList.remove("team-person-active")
+    })
+
+    // Show the correct items for the current slide
+    const startIndex = index * itemsPerSlide
+    for (
+      let i = startIndex;
+      i < startIndex + itemsPerSlide && i < slideCount;
+      i++
+    ) {
+      people[i].classList.add("team-person-active")
+    }
+
+    updateTeamDots(index)
+  }
+
+  function updateTeamDots(index) {
+    const teamDots = teamdotscontainer.querySelectorAll(".team-dot")
+    teamDots.forEach((dot, i) => {
+      dot.classList.toggle("team-dot-active", i === index)
+    })
+  }
+
+  function createTeamDots() {
+    const totalDots = Math.ceil(slideCount / itemsPerSlide)
+    for (let i = 0; i < totalDots; i++) {
+      const teamDot = document.createElement("span")
+      teamDot.classList.add("team-dot")
+      teamDot.addEventListener("click", () => {
+        showPerson(i)
+        currentIndex = i
+        restartCarousel()
+      })
+      teamdotscontainer.appendChild(teamDot)
+    }
+    updateTeamDots(currentIndex)
+  }
+
+  function startCarousel() {
+    showPerson(currentIndex)
+    intervalId = setInterval(() => {
+      currentIndex = (currentIndex + 1) % Math.ceil(slideCount / itemsPerSlide)
+      showPerson(currentIndex)
+    }, 5000)
   }
 
   function restartCarousel() {
