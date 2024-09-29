@@ -12,7 +12,8 @@ hamburger.addEventListener("click", () => {
 
 /* Carousel */
 
-var carousel = document.getElementById("carousel-inner")
+document.addEventListener('DOMContentLoaded', function () {
+  var carousel = document.getElementById("carousel-inner")
 var items = document.querySelectorAll(".carousel-item")
 var dotsContainer = document.getElementById("dots")
 const totalItems = items.length
@@ -63,6 +64,7 @@ function resetInterval() {
 
 createdots()
 startInterval()
+})
 
 /* Footer year */
 
@@ -103,212 +105,111 @@ body.onscrollend = function() {
 
 /* Modal close function */
 
-var modal = document.getElementById("modal")
-var modalclose = document.getElementById("modalclose")
+document.addEventListener('DOMContentLoaded', function () {
+  var modal = document.getElementById("modal")
+  var modalclose = document.getElementById("modalclose")
 
-modalclose.addEventListener("click", () => {
-  modal.classList.add("top-full")
-  modal.classList.remove("top-0")
-})
+  modalclose.addEventListener("click", () => {
+    modal.classList.add("top-full")
+    modal.classList.remove("top-0")
+  })
 
-/* Pastwork desktop manual navigation */
+  /* Pastwork desktop manual navigation */
 
-var moveleft = document.getElementById("pastwork-move-left")
-var moveright = document.getElementById("pastwork-move-right")
-var scrollcontainer = document.getElementById("sub-pastwork").scrollBy
+  var moveleft = document.getElementById("pastwork-move-left")
+  var moveright = document.getElementById("pastwork-move-right")
+  var scrollcontainer = document.getElementById("sub-pastwork").scrollBy
 
-moveleft.addEventListener("click", () => {
-  document.getElementById("sub-pastwork").scrollBy({
-    left: -200,
-    behavior: "smooth",
+  moveleft.addEventListener("click", () => {
+    document.getElementById("sub-pastwork").scrollBy({
+      left: -200,
+      behavior: "smooth",
+    })
+  })
+  moveright.addEventListener("click", () => {
+    document.getElementById("sub-pastwork").scrollBy({
+      left: 200,
+      behavior: "smooth",
+    })
   })
 })
-moveright.addEventListener("click", () => {
-  document.getElementById("sub-pastwork").scrollBy({
-    left: 200,
-    behavior: "smooth",
-  })
-})
 
-/* Management team auto scroll */
+//team carousel
 
-document.addEventListener("DOMContentLoaded", () => {
-  const people = document.querySelectorAll(".team-person")
-  const teamdotscontainer = document.getElementById("team-dots-container")
+document.addEventListener("DOMContentLoaded", function () {
+  const carousels = document.querySelectorAll(".team-carousel");
 
-  let currentIndex = 0
-  let itemsPerSlide = getItemsPerSlide()
-  const slideCount = people.length
-  let intervalId
+  carousels.forEach((carousel, index) => {
+      const slides = carousel.children;
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      const dotsContainer = document.querySelectorAll(".team-dots-container")[index];
+      let autoScrollInterval;
 
-  function getItemsPerSlide() {
-    // Determine the number of items per slide based on the viewport width
-    if (window.innerWidth >= 992) {
-      return 3 // Large screens
-    } else if (window.innerWidth >= 768) {
-      return 2 // Medium screens
-    } else {
-      return 1 // Small screens
-    }
-  }
+      const createDots = () => {
+          for (let i = 0; i < Math.ceil(totalSlides / getVisibleSlides()); i++) {
+              const dot = document.createElement("span");
+              dot.classList.add("team-dot");
+              dot.dataset.index = i;
+              dot.addEventListener("click", () => {
+                  clearInterval(autoScrollInterval);  // Stop auto-scrolling on dot click
+                  currentIndex = i * getVisibleSlides();
+                  updateCarousel();
+                  restartAutoScroll(); // Restart auto-scrolling after dot click
+              });
+              dotsContainer.appendChild(dot);
+          }
+          updateDots();
+      };
 
-  function showPerson(index) {
-    // Hide all items
-    people.forEach((slide, i) => {
-      slide.classList.remove("team-person-active")
-    })
+      const updateDots = () => {
+          const dots = dotsContainer.querySelectorAll(".team-dot");
+          dots.forEach((dot, idx) => {
+              if (idx === Math.floor(currentIndex / getVisibleSlides())) {
+                  dot.classList.add("team-dot-active");
+              } else {
+                  dot.classList.remove("team-dot-active");
+              }
+          });
+      };
 
-    // Show the correct items for the current slide
-    const startIndex = index * itemsPerSlide
-    for (
-      let i = startIndex;
-      i < startIndex + itemsPerSlide && i < slideCount;
-      i++
-    ) {
-      people[i].classList.add("team-person-active")
-    }
+      const getVisibleSlides = () => {
+          const width = window.innerWidth;
+          if (width >= 1200) return 3;  // Large screen: 3 slides
+          if (width >= 768) return 2;   // Medium screen: 2 slides
+          return 1;                      // Small screen: 1 slide
+      };
 
-    updateTeamDots(index)
-  }
+      const updateCarousel = () => {
+          const slideWidth = 100 / getVisibleSlides();
+          carousel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+          updateDots();
+      };
 
-  function updateTeamDots(index) {
-    const teamDots = teamdotscontainer.querySelectorAll(".team-dot")
-    teamDots.forEach((dot, i) => {
-      dot.classList.toggle("team-dot-active", i === index)
-    })
-  }
+      const autoScroll = () => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          if (currentIndex >= totalSlides - getVisibleSlides() + 1) currentIndex = 0;
+          updateCarousel();
+      };
 
-  function createTeamDots() {
-    const totalDots = Math.ceil(slideCount / itemsPerSlide)
-    for (let i = 0; i < totalDots; i++) {
-      const teamDot = document.createElement("span")
-      teamDot.classList.add("team-dot")
-      teamDot.addEventListener("click", () => {
-        showPerson(i)
-        currentIndex = i
-        restartCarousel()
-      })
-      teamdotscontainer.appendChild(teamDot)
-    }
-    updateTeamDots(currentIndex)
-  }
+      const startAutoScroll = () => {
+          autoScrollInterval = setInterval(autoScroll, 3000);  // 3 seconds per slide
+      };
 
-  function startCarousel() {
-    showPerson(currentIndex)
-    intervalId = setInterval(() => {
-      currentIndex = (currentIndex + 1) % Math.ceil(slideCount / itemsPerSlide)
-      showPerson(currentIndex)
-    }, 5000)
-  }
+      const restartAutoScroll = () => {
+          clearInterval(autoScrollInterval);  // Clear the previous interval
+          startAutoScroll();                  // Restart auto-scrolling
+      };
 
-  function restartCarousel() {
-    clearInterval(intervalId)
-    startCarousel()
-  }
+      startAutoScroll(); // Start auto-scroll initially
 
-  function onResize() {
-    itemsPerSlide = getItemsPerSlide()
-    createTeamDots() // Recreate dots based on the new number of items per slide
-    showPerson(currentIndex) // Show the correct items based on the new number of items per slide
-  }
+      window.addEventListener("resize", () => {
+          updateCarousel();  // Recalculate positions on resize
+      });
 
-  // Initial setup
-  createTeamDots()
-  startCarousel()
-
-  // Recalculate on resize
-  window.addEventListener("resize", onResize)
-})
-
-// Board team autoscroll
-
-document.addEventListener("DOMContentLoaded", () => {
-  const people = document.querySelectorAll(".bteam-person")
-  const teamdotscontainer = document.getElementById("bteam-dots-container")
-
-  let currentIndex = 0
-  let itemsPerSlide = getItemsPerSlide()
-  const slideCount = people.length
-  let intervalId
-
-  function getItemsPerSlide() {
-    // Determine the number of items per slide based on the viewport width
-    if (window.innerWidth >= 992) {
-      return 3 // Large screens
-    } else if (window.innerWidth >= 768) {
-      return 2 // Medium screens
-    } else {
-      return 1 // Small screens
-    }
-  }
-
-  function showPerson(index) {
-    // Hide all items
-    people.forEach((slide, i) => {
-      slide.classList.remove("team-person-active")
-    })
-
-    // Show the correct items for the current slide
-    const startIndex = index * itemsPerSlide
-    for (
-      let i = startIndex;
-      i < startIndex + itemsPerSlide && i < slideCount;
-      i++
-    ) {
-      people[i].classList.add("team-person-active")
-    }
-
-    updateTeamDots(index)
-  }
-
-  function updateTeamDots(index) {
-    const teamDots = teamdotscontainer.querySelectorAll(".team-dot")
-    teamDots.forEach((dot, i) => {
-      dot.classList.toggle("team-dot-active", i === index)
-    })
-  }
-
-  function createTeamDots() {
-    const totalDots = Math.ceil(slideCount / itemsPerSlide)
-    for (let i = 0; i < totalDots; i++) {
-      const teamDot = document.createElement("span")
-      teamDot.classList.add("team-dot")
-      teamDot.addEventListener("click", () => {
-        showPerson(i)
-        currentIndex = i
-        restartCarousel()
-      })
-      teamdotscontainer.appendChild(teamDot)
-    }
-    updateTeamDots(currentIndex)
-  }
-
-  function startCarousel() {
-    showPerson(currentIndex)
-    intervalId = setInterval(() => {
-      currentIndex = (currentIndex + 1) % Math.ceil(slideCount / itemsPerSlide)
-      showPerson(currentIndex)
-    }, 5000)
-  }
-
-  function restartCarousel() {
-    clearInterval(intervalId)
-    startCarousel()
-  }
-
-  function onResize() {
-    itemsPerSlide = getItemsPerSlide()
-    createTeamDots() // Recreate dots based on the new number of items per slide
-    showPerson(currentIndex) // Show the correct items based on the new number of items per slide
-  }
-
-  // Initial setup
-  createTeamDots()
-  startCarousel()
-
-  // Recalculate on resize
-  window.addEventListener("resize", onResize)
-})
+      createDots();
+  });
+});
 
 // Readmore
 

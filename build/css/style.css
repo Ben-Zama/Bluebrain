@@ -1290,98 +1290,117 @@ video {
 
 .team {
   width: 100%;
-  margin-top: 25px;
-  position: relative;
-}
-.bteam {
-  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  overflow-x: hidden;
 }
 
 .team-header {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 25px;
 }
 
-.team-logo {
-  height: 100px;
-  display: flex;
-  align-items: center;
-}
-
-.team-logo img {
-  width: 80%;
-  height: 80%;
-  -o-object-fit: contain;
-     object-fit: contain;
+.team-header img {
+  width: 75px;
+  width: 75px;
 }
 
 .team-header p {
-  height: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
+  color: #228b22;
+  font-size: 25px;
+  font-family: 'Merriweather Sans';
+  font-weight: bold;
+}
+
+.team-header span {
   color: #86a63d;
 }
 
 .team-carousel {
-  width: 100%;
   display: flex;
-  overflow-x: scroll;
-  margin-top: 50px;
-}
-
-.team-person, .bteam-person {
   width: 100%;
-  height: 300px;
-  flex: 0 0 80%;
-  position: relative;
-  box-shadow: 4px 4px 16px lightgray, -4px -4px 16px lightgray;
-  margin: 0 10%;
-  display: none;
 }
 
-.team-person-active {
-  display: block;
+.team-person {
+  height: 300px;
+  width: 100%;
+  flex: 0 0 80%;
+  margin: 0 10%;
+  border: 1px solid rgb(0 0 0 / 0.25);
+  position: relative;
+}
+
+@media (min-width: 768px){
+  .team-person {
+    flex: 0 0 45%;
+    margin: 0 2.5%;
+  }
+}
+
+@media (min-width: 1200px){
+  .team-person {
+    height: 400px;
+    flex: 0 0 28.33%;
+    margin: 0 2.5%;
+  }
 }
 
 .person-image {
+  width: 100%;
+  height: 100%;
+}
+
+.person-image img {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .person-about {
-  width: 90%;
-  height: 30%;
   position: absolute;
-  bottom: 2.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid #86a63d;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
+  align-items: center;
 }
 
-#team-dots-container, #bteam-dots-container {
-  margin-top: 10px;
+.person-about :nth-child(1) {
+  font-family: 'Merriweather Sans';
+  font-weight: bold;
+  color: #fff;
+  font-size: 20px;
+}
+
+.person-about :nth-child(2) {
+  font-family: 'Imprima';
+  color: #fff;
+  font-size: 15px;
+}
+
+.team-dots-container {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: calc(100% + 10px);
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .team-dot {
-  display: inline-block;
-  height: 10px;
-  width: 10px;
-  margin: 0 5px;
-  background-color: #bbb;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
+  background-color: #ccc;
   cursor: pointer;
 }
 
@@ -1522,24 +1541,6 @@ input[type="submit"] {
     content: "";
   }
 
-  .team {
-    margin-top: 50px;
-  }
-
-  .team-header {
-    gap: 25px;
-  }
-
-  .team-carousel {
-    padding: 0 5% 0 0;
-  }
-
-  .team-person {
-    height: 350px;
-    flex: 1 0 45%;
-    margin: 0 0 0 5%;
-  }
-
   .ch div::before,
   .ch div::after {
     width: 30%;
@@ -1593,19 +1594,6 @@ input[type="submit"] {
   .ch div::after {
     width: 35%;
     height: 2.5px;
-  }
-
-  .team {
-    margin-top: 75px;
-  }
-
-  .team-header {
-    gap: 50px;
-  }
-
-  .team-person {
-    flex: 1 0 30%;
-    margin: 0 0 0 2.5%;
   }
 
   .main-pastwork {

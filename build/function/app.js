@@ -149,8 +149,8 @@ const app = Vue.createApp({
       modal.classList.remove("top-full")
       modal.classList.add("top-0")
       document.getElementById("modaltext").textContent = item.modaltext
-    },
-  },
+    }
+}
 })
 
 app.mount("#main")
