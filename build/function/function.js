@@ -7,7 +7,6 @@ hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active")
   sidebar.classList.toggle("-left-full")
   sidebar.classList.toggle("left-0")
-  sidebar.classList.toggle("border-r-2")
 })
 
 /* Carousel */
@@ -136,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //team carousel
 
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
   const carousels = document.querySelectorAll(".team-carousel");
 
   carousels.forEach((carousel, index) => {
@@ -209,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       createDots();
   });
-});
+}); */
 
 // Readmore
 
