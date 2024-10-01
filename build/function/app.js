@@ -96,7 +96,7 @@ const app = Vue.createApp({
             "BlueBrain Agro & Allied Services will ensure full technology deployment as an enabler to efficient and effective project management that enables transparency, and high-quality data for monitoring, evaluation, reporting and development planning. BlueBrain Agro & Allied Services will carry out additional on-site and off-site activities (where required) to produce real-time and human-specific results. In addition, BlueBrain Agro & Allied Services will hold focus groups for data collection, formative assessments, and commentaries from a selected group of rural dwellers from the three zones who will provide feedback on the status, challenges, and potential solutions in the livestock sub-sector. Summative evaluations will be further developed to determine the components that BlueBrain Agro & Allied Services thinks will enhance livestock development in Kaduna state.",
         },
       ],
-      pastworkS: [
+      ServicePastwork: [
         {
           image: "../resources/pastwork/1.png",
           head: "Delivery of fertilizers and pesticides to farmers to prevent the destruction of plants from pests & parasites",
