@@ -153,7 +153,7 @@ const app = Vue.createApp({
         },
         { name: "Godswill Egbe",
           role: "Executive Director - Finance and Operations", 
-          image: "../resources/team/Egbe.png" 
+          image: "../resources/team/Godswill.jpg" 
         },
         { name: "Gerald Umeze",
           role: "MEL Specialists", 

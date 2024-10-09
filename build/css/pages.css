@@ -24,9 +24,9 @@
     font-family: "Merriweather Sans";
     font-size: 35px;
 }
-.team-carousel-about {
+.teama-carousel-about, .teamb-carousel-about {
     display: flex;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     gap: 20px;
     width: 100%;
@@ -122,16 +122,17 @@
         padding: 2.5% 5%;
         column-gap: 2.5%;
         row-gap: 25px;
+        overflow: scroll;
     }
     .teama-carousel-about::-webkit-scrollbar, .teamb-carousel-about::-webkit-scrollbar {
-        height: 10px;
+        height: 5px;
     }
     .teama-carousel-about::-webkit-scrollbar-track, .teamb-carousel-about::-webkit-scrollbar-track {
-        background-color: lightgray;
+        box-shadow:1px 1px 5px inset rgb(219, 213, 213);
         border-radius: 5px;
     }
     .teama-carousel-about::-webkit-scrollbar-thumb, .teamb-carousel-about::-webkit-scrollbar-thumb {
-        background-color: #228b22;
+        background-color: gray;
         border-radius: 10px;
     }
     .teama-carousel-about .team-person, .teamb-carousel-about .team-person {
