@@ -69,39 +69,6 @@ startInterval()
 
 document.getElementById("year").innerHTML = new Date().getFullYear()
 
-/* Header hide on scroll */
-
-/* const header = document.getElementById('header');
-const targetElement = document.getElementById('intersection');
-
-const observerCallback = (entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Target element is in the viewport, show the header
-      header.classList.add('header-hidden');
-    } else {
-      // Target element is out of the viewport, hide the header
-      header.classList.remove('header-hidden');
-    }
-  });
-};
-
-const observer = new IntersectionObserver(observerCallback, {
-  root: null, // Viewport
-  threshold: 0.1 // Trigger when 10% of the element is visible
-});
-
-// Start observing the target element
-observer.observe(targetElement);
-
-var body = document.getElementById('body');
-body.onscroll = function() {
-    targetElement.style.display = 'block';
-}
-body.onscrollend = function() {
-    targetElement.style.display = 'none'
-} */
-
 /* Modal close function */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -113,7 +80,57 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.classList.remove("top-0")
   })
 
-  /* Pastwork desktop manual navigation */
+  // Team carousel
+
+    const teamCarousel = document.querySelector('.team-carousel')
+    const slides = document.querySelectorAll('.team-carousel .team-person')
+    const dots = document.querySelectorAll('.team-dots-container .team-dot')  
+    let currentIndex = 0
+    let autoScrollInterval;
+
+    function updateCarousel(index) {
+      const slideWidth = slides[0].offsetWidth + 20; // Slide width + gap
+      const offset = slideWidth * index;
+
+      teamCarousel.scrollTo({
+        left: offset,
+        behavior: 'smooth',
+      });
+
+
+      dots.forEach(dot => dot.classList.remove('team-dot-active'));
+      dots[index].classList.add('team-dot-active');
+
+      currentIndex = index;
+
+      
+
+    }
+    console.log(dots.length, slides.length)
+    function autoScroll() {
+      autoScrollInterval = setInterval(() => {
+        let newIndex = (currentIndex + 1) % slides.length;
+
+        updateCarousel(newIndex)
+      }, 5000);
+    }
+
+    function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      autoScroll();
+    }
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        updateCarousel(index);
+        resetAutoScroll();
+      })
+    })
+
+    if (window.innerWidth < 700) {
+      autoScroll();
+    }
+
+  // Pastwork desktop manual navigation
 
   var moveleft = document.getElementById("pastwork-move-left")
   var moveright = document.getElementById("pastwork-move-right")
@@ -132,83 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   })
 })
-
-//team carousel
-
-/* document.addEventListener("DOMContentLoaded", function () {
-  const carousels = document.querySelectorAll(".team-carousel");
-
-  carousels.forEach((carousel, index) => {
-      const slides = carousel.children;
-      const totalSlides = slides.length;
-      let currentIndex = 0;
-      const dotsContainer = document.querySelectorAll(".team-dots-container")[index];
-      let autoScrollInterval;
-
-      const createDots = () => {
-          for (let i = 0; i < Math.ceil(totalSlides / getVisibleSlides()); i++) {
-              const dot = document.createElement("span");
-              dot.classList.add("team-dot");
-              dot.dataset.index = i;
-              dot.addEventListener("click", () => {
-                  clearInterval(autoScrollInterval);  // Stop auto-scrolling on dot click
-                  currentIndex = i * getVisibleSlides();
-                  updateCarousel();
-                  restartAutoScroll(); // Restart auto-scrolling after dot click
-              });
-              dotsContainer.appendChild(dot);
-          }
-          updateDots();
-      };
-
-      const updateDots = () => {
-          const dots = dotsContainer.querySelectorAll(".team-dot");
-          dots.forEach((dot, idx) => {
-              if (idx === Math.floor(currentIndex / getVisibleSlides())) {
-                  dot.classList.add("team-dot-active");
-              } else {
-                  dot.classList.remove("team-dot-active");
-              }
-          });
-      };
-
-      const getVisibleSlides = () => {
-          const width = window.innerWidth;
-          if (width >= 1200) return 3;  // Large screen: 3 slides
-          if (width >= 768) return 2;   // Medium screen: 2 slides
-          return 1;                      // Small screen: 1 slide
-      };
-
-      const updateCarousel = () => {
-          const slideWidth = 100 / getVisibleSlides();
-          carousel.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-          updateDots();
-      };
-
-      const autoScroll = () => {
-          currentIndex = (currentIndex + 1) % totalSlides;
-          if (currentIndex >= totalSlides - getVisibleSlides() + 1) currentIndex = 0;
-          updateCarousel();
-      };
-
-      const startAutoScroll = () => {
-          autoScrollInterval = setInterval(autoScroll, 3000);  // 3 seconds per slide
-      };
-
-      const restartAutoScroll = () => {
-          clearInterval(autoScrollInterval);  // Clear the previous interval
-          startAutoScroll();                  // Restart auto-scrolling
-      };
-
-      startAutoScroll(); // Start auto-scroll initially
-
-      window.addEventListener("resize", () => {
-          updateCarousel();  // Recalculate positions on resize
-      });
-
-      createDots();
-  });
-}); */
 
 // Readmore
 

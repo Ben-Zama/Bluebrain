@@ -1227,6 +1227,17 @@ video {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.carousel-text {
+  position: relative;
+}
+
+.carousel-text::after {
+  content: url(../resources/underline.svg);
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+} 
+
 .dots {
   position: absolute;
   bottom: 20px;
@@ -1262,10 +1273,24 @@ video {
   color: #86a63d;
 }
 
+.c-p-t {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px 5%;
+}
+
+.m-v-m {
+  background-color: #f0f0f0;
+  padding: 50px 0 0 0;
+}
+
 .m-v-m::after {
   width: 1px;
-  height: 100%;
+  height: 75%;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #228b22;
   border-radius: 5px;
 }
@@ -1359,15 +1384,18 @@ video {
   color: #86a63d;
 }
 
-.team-carousel {
+.team-carousel, .teama-carousel-about, .teamb-carousel-about {
   display: flex;
-  flex-direction: column;
-  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
   width: 100%;
   padding: 0 5%;
+  white-space: nowrap;
 }
 
 .team-person {
+  flex: 0 0 auto;
   height: 300px;
   width: 100%;
   border: 1px solid rgb(0 0 0 / 0.25);
@@ -1389,24 +1417,24 @@ video {
 @media (min-width: 768px){
   .team-carousel {
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 2.5%;
     column-gap: 2.5%;
     row-gap: 25px;
   }
   .team-person {
-    flex: 0 0 48.5%;
+    flex: 0 0 30%;
+    height: 250px;
   }
 }
 
 @media (min-width: 1200px){
   .team-carousel {
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .team-person {
-    height: 400px;
-    flex: 0 0 30%;
+    height: 300px;
+    flex: 0 0 25%;
   }
 }
 
@@ -1430,13 +1458,12 @@ video {
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
 .person-about :nth-child(1) {
   font-family: 'Merriweather Sans';
-  font-weight: bold;
   color: #fff;
   font-size: 20px;
 }
@@ -1445,9 +1472,11 @@ video {
   font-family: 'Imprima';
   color: #fff;
   font-size: 15px;
+  text-wrap: wrap;
+  text-align: center;
 }
 
-.team-dots-container {
+.team-dots-container, .teamaabout-dots-container, .teambabout-dots-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1567,7 +1596,6 @@ video {
 .input-control label {
   color: black;
   font-family: "Imprima";
-  font-weight: bold;
 }
 
 .input-control input,
@@ -1588,7 +1616,7 @@ video {
 input[type="submit"] {
   border: 1px solid #228b22;
   color: #228b22;
-  padding: 5px 25px;
+  padding: 2.5px 20px;
   border-radius: 5px;
   font-family: "Cairo";
   font-weight: bold;
@@ -1633,6 +1661,10 @@ footer a:hover {
     width: 35%;
   }
 
+  .m-v-m {
+    padding: 100px 0;
+  }
+
   .m-v-m::after {
     content: "";
   }
@@ -1640,6 +1672,10 @@ footer a:hover {
   .ch div::before,
   .ch div::after {
     width: 30%;
+  }
+
+  .team-dots-container .teama-dots-container, .teamb-dots-container {
+    display: none;
   }
 
   .main-pastwork {
@@ -1692,6 +1728,14 @@ footer a:hover {
     height: 2.5px;
   }
 
+  .c-p-t {
+    padding: 20px 15%;
+  }
+
+  .m-v-m {
+    padding: 100px;
+  }
+
   .main-pastwork {
     height: 600px;
     padding: 2.5% 0;
@@ -1708,7 +1752,7 @@ footer a:hover {
   }
 
   .pastwork {
-    flex: 1 0 30%;
+    flex: 1 0 25%;
     padding: 1%;
     margin: 0 0 0 2.5%;
     transition: 0.5s;
@@ -1752,6 +1796,18 @@ footer a:hover {
 
   .md\:h-4\/6 {
     height: 66.666667%;
+  }
+
+  .md\:h-10\% {
+    height: 10%;
+  }
+
+  .md\:h-30\% {
+    height: 40%;
+  }
+
+  .md\:h-60\% {
+    height: 50%;
   }
 
   .md\:w-4\/6 {
@@ -1840,20 +1896,12 @@ footer a:hover {
     height: 2.5rem;
   }
 
-  .lg\:h-10\% {
-    height: 10%;
-  }
-
   .lg\:h-16 {
     height: 4rem;
   }
 
   .lg\:h-4\/5 {
     height: 80%;
-  }
-
-  .lg\:h-45\% {
-    height: 45%;
   }
 
   .lg\:h-60 {
@@ -1900,6 +1948,11 @@ footer a:hover {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .lg\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .lg\:py-1 {

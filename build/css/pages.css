@@ -24,6 +24,17 @@
     font-family: "Merriweather Sans";
     font-size: 35px;
 }
+.team-carousel-about {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    width: 100%;
+    padding: 0 5%;
+    white-space: nowrap;
+    text-wrap: wrap;
+    text-align: center;
+}
 .consulting .header {
     width: 100%;
     text-align: center;
@@ -106,6 +117,26 @@
     .consulting .header div {
         width: 50%;
     }
+    .team-carousel-about {
+        flex-direction: row;
+        padding: 2.5% 5%;
+        column-gap: 2.5%;
+        row-gap: 25px;
+    }
+    .team-carousel-about::-webkit-scrollbar {
+        height: 10px;
+    }
+    .team-carousel-about::-webkit-scrollbar-track {
+        background-color: lightgray;
+        border-radius: 5px;
+    }
+    .team-carousel-about::-webkit-scrollbar-thumb {
+        background-color: #228b22;
+        border-radius: 10px;
+    }
+    .team-carousel-about .team-person {
+        flex: 1 0 35%;
+    }
     .pastworkS {
         flex-direction: row;
         align-items: center;
@@ -130,6 +161,9 @@
 @media (min-width: 992px){
     .header-image {
         margin-top: 64px;
+    }
+    .team-carousel-about .team-person {
+        flex: 1 0 25%;
     }
     .pastworkS {
         padding: 2% 5%;

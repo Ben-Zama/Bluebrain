@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/+add.css">
     <link rel="stylesheet" href="../css/pages.css">
-    <script src="../function/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
 
@@ -104,7 +104,7 @@
                 </div>
 
                 <nav class="hidden lg:block w-3/6 h-full">
-                    <ul class="h-full flex items-center justify-evenly font-sub-head text-xl text-white">
+                    <ul style="gap: 50px;" class="h-full flex items-center justify-center font-sub-head text-white">
                         <li class="pc-nav-hover"><a href="../index.html">Home</a></li>
                         <li class="pc-nav-hover"><a href="#">About</a></li>
                         <li class="pc-nav-hover"><a href="services.html">Services</a></li>
@@ -127,6 +127,62 @@
                 </div>
             </div>
 
+            <!-- Comapany profile -->
+
+            <div id="about" class="w-full mt-20">
+
+                <p class="c-p-h font-bold font-head text-3xl md:text-4xl">Company<span
+                        class="text-primary">Profile</span></p>
+                <div id="about-content-cont" class="fade font-body md:text-xl px-5 md:px-10 mt-10">
+                    <div id="about-content-sub-cont">
+                        <p>BlueBrain Agro and Allied Services Ltd is a corporate entity that delivers high-quality
+                            services
+                            in the agricultural value chain with a special focus on production, aggregation, and market
+                            linkages. Our service areas include but are not limited to activities from the production
+                            through processing and marketing of farm produce. In doing this, we provide out-growers
+                            financing, extension and advisory services, training and advocacy, Agri-credit and risk
+                            management, linkages to finance, insurance and pensions, research, monitoring evaluation and
+                            learning, business incubation, and scaling. Blue-Brain Agro and Allied Services Ltd is a
+                            creation of corporate professionals in the agricultural value chain, agricultural financing,
+                            MSMEs and project management. Their ambition is to deliver quality services that will
+                            improve
+                            production and quality of produce, add value and prolong produce shelf life, and provide
+                            market
+                            linkages so that farmers can make profit from their produce.</p><br>
+                        <p>With extensive knowledge and experience in the Agri sector, we are highly skilled
+                            professionals
+                            with committed technical know-how. Thus, we can be relied upon to offer quality services
+                            necessary to resolve farmers’ challenges to improved production.</p><br>
+                        <p>Our business provides technical assistance to Nigeria farmers through training, access to
+                            credit
+                            options, Business incubation, and scaling. We offer bespoke solutions, and tailor programs
+                            to
+                            enable individual customers and organizations to manage their cost of capital well into the
+                            future.</p><br>
+                        <p>Blue-Brain Agro ensures that our clients have access to quality and affordable products and
+                            services, financial advice, training and capacity building, extension and advisory services
+                            delivered by a growing network of independent advisors and financial services firms.</p><br>
+                        <p>We have developed yield improvement training for participating, and start-up farmers most
+                            especially our agribusiness advisory at rural community levels. This training is aimed at
+                            developing a functional agribusiness value chain in all LGCs to encourage aggregation and
+                            offtaking. In this process, jobs are created, and inter-state agricultural trades are
+                            encouraged.</p><br>
+                        <p>Blue-Brain Agro and Allied Services is driven by customer satisfaction with the objective of
+                            building long-term partnerships through personal and professional services. From design
+                            concept
+                            to bespoke finish, Blue-Brain utilizes a friendly and efficient approach to meet customers’
+                            needs. Whether experimental, prototype or scaleup – Blue-Brain Agro and Allied Services is
+                            committed to maintaining continuity and consistency and is dedicated to an ongoing
+                            investment
+                            commitment, promoting leadership in a global and ever-changing environment.</p>
+                    </div>
+                </div>
+                <span class="rdmr">
+                    <button id="rdmr">Read more</button>
+                </span>
+
+            </div>
+
             <!-- Management team -->
 
             <div class="team">
@@ -134,7 +190,7 @@
                     <img src="../resources/management-icon.png">
                     <p> <span>Management</span> Team</p>
                 </div>
-                <div class="team-carousel">
+                <div class="teama-carousel-about">
                     <div v-for="item in mteam" class="team-person">
                         <div class="person-image">
                             <img :src="item.image">
@@ -145,6 +201,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="teamaabout-dots-container">
+                    <span class="team-dot team-dot-active" v-for="item in mteam"></span>
+                </div>
             </div>
 
             <!-- Board team -->
@@ -154,7 +213,7 @@
                     <img src="../resources/board-icon.png">
                     <p> <span>Board</span> Team</p>
                 </div>
-                <div class="team-carousel">
+                <div class="teamb-carousel-about">
                     <div v-for="item in bteam" class="team-person">
                         <div class="person-image">
                             <img :src="item.image">
@@ -165,6 +224,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="teambabout-dots-container">
+                    <span class="team-dot team-dot-active" v-for="item in bteam"></span>
+                </div>
+                
             </div>
 
             <!-- Footer -->
@@ -245,6 +308,107 @@
 
     <script src="../function/app.js"></script>
     <script src="../function/function.js"></script>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const teamCarousel = document.querySelector('.teama-carousel-about')
+        const slides = document.querySelectorAll('.teama-carousel-about .team-person')
+        const dots = document.querySelectorAll('.teamaabout-dots-container .team-dot')  
+        let currentIndex = 0
+        let autoScrollInterval;
+
+        function updateCarousel(index) {
+        const slideWidth = slides[0].offsetWidth + 20; // Slide width + gap
+        const offset = slideWidth * index;
+
+        teamCarousel.scrollTo({
+            left: offset,
+            behavior: 'smooth',
+        });
+
+
+        dots.forEach(dot => dot.classList.remove('team-dot-active'));
+        dots[index].classList.add('team-dot-active');
+
+        currentIndex = index;
+
+        
+
+        }
+        console.log(dots.length, slides.length)
+        function autoScroll() {
+        autoScrollInterval = setInterval(() => {
+            let newIndex = (currentIndex + 1) % slides.length;
+
+            updateCarousel(newIndex)
+        }, 5000);
+        }
+
+        function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScroll();
+        }
+        dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            updateCarousel(index);
+            resetAutoScroll();
+        })
+        })
+
+        if (window.innerWidth < 700) {
+        autoScroll();
+        }
+    }); 
+    window.addEventListener('DOMContentLoaded', () => {
+        const teamCarousel = document.querySelector('.teamb-carousel-about')
+        const slides = document.querySelectorAll('.teamb-carousel-about .team-person')
+        const dots = document.querySelectorAll('.teambabout-dots-container .team-dot')  
+        let currentIndex = 0
+        let autoScrollInterval;
+
+        function updateCarousel(index) {
+        const slideWidth = slides[0].offsetWidth + 20; // Slide width + gap
+        const offset = slideWidth * index;
+
+        teamCarousel.scrollTo({
+            left: offset,
+            behavior: 'smooth',
+        });
+
+
+        dots.forEach(dot => dot.classList.remove('team-dot-active'));
+        dots[index].classList.add('team-dot-active');
+
+        currentIndex = index;
+
+        
+
+        }
+        console.log(dots.length, slides.length)
+        function autoScroll() {
+        autoScrollInterval = setInterval(() => {
+            let newIndex = (currentIndex + 1) % slides.length;
+
+            updateCarousel(newIndex)
+        }, 5000);
+        }
+
+        function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScroll();
+        }
+        dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            updateCarousel(index);
+            resetAutoScroll();
+        })
+        })
+
+        if (window.innerWidth < 700) {
+        autoScroll();
+        }
+    }); 
+    </script>
 
 </body>
 

@@ -161,11 +161,11 @@ const app = Vue.createApp({
         },
         { name: "Abubakar Kolo Ndakpoto",
           role: "Finance and Marketing specialist", 
-          image: "../resources/team/image8.jpg" 
+          image: "../resources/team/avatar.jpg" 
         },
         { name: "Stanley Nwachukwu",
           role: "Project mangement expert", 
-          image: "../resources/team/image9.jpg" 
+          image: "../resources/team/avatar.jpg" 
         },
       ],
       mteaml: [
@@ -175,7 +175,7 @@ const app = Vue.createApp({
         },
         { name: "Godswill Egbe",
           role: "Executive Director - Finance and Operations", 
-          image: "resources/team/Egbe.png" 
+          image: "resources/team/Godswill.jpg" 
         },
         { name: "Gerald Umeze",
           role: "MEL Specialists", 
@@ -193,15 +193,15 @@ const app = Vue.createApp({
         },
         { name: "Prof. Sambo Banake",
           role: "Member", 
-          image: "../resources/team/image7.jpg" 
+          image: "../resources/team/avatar.jpg" 
         },
         { name: "Shayet Gani-Ikilama", 
           role: "Member",
-          image: "../resources/team/image1.jpg" 
+          image: "../resources/team/shayet.jpg" 
         },
         { name: "Stephanie Ugochukwu",
           role: "Company Secretary/Legal Adviser", 
-          image: "../resources/team/image2.jpg" 
+          image: "../resources/team/avatar.jpg" 
         },
       ],
     }
@@ -212,7 +212,7 @@ const app = Vue.createApp({
       modal.classList.remove("top-full")
       modal.classList.add("top-0")
       document.getElementById("modaltext").textContent = item.modaltext
-    }
+    },
 }
 })
 
