@@ -117,24 +117,24 @@
     .consulting .header div {
         width: 50%;
     }
-    .team-carousel-about {
+    .teama-carousel-about, .teamb-carousel-about {
         flex-direction: row;
         padding: 2.5% 5%;
         column-gap: 2.5%;
         row-gap: 25px;
     }
-    .team-carousel-about::-webkit-scrollbar {
+    .teama-carousel-about::-webkit-scrollbar, .teamb-carousel-about::-webkit-scrollbar {
         height: 10px;
     }
-    .team-carousel-about::-webkit-scrollbar-track {
+    .teama-carousel-about::-webkit-scrollbar-track, .teamb-carousel-about::-webkit-scrollbar-track {
         background-color: lightgray;
         border-radius: 5px;
     }
-    .team-carousel-about::-webkit-scrollbar-thumb {
+    .teama-carousel-about::-webkit-scrollbar-thumb, .teamb-carousel-about::-webkit-scrollbar-thumb {
         background-color: #228b22;
         border-radius: 10px;
     }
-    .team-carousel-about .team-person {
+    .teama-carousel-about .team-person, .teamb-carousel-about .team-person {
         flex: 1 0 35%;
     }
     .pastworkS {
@@ -162,7 +162,7 @@
     .header-image {
         margin-top: 64px;
     }
-    .team-carousel-about .team-person {
+    .teama-carousel-about .team-person, .teamb-carousel-about .team-person {
         flex: 1 0 25%;
     }
     .pastworkS {

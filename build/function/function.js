@@ -88,45 +88,42 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentIndex = 0
     let autoScrollInterval;
 
-    function updateCarousel(index) {
-      const slideWidth = slides[0].offsetWidth + 20; // Slide width + gap
-      const offset = slideWidth * index;
-
-      teamCarousel.scrollTo({
-        left: offset,
-        behavior: 'smooth',
-      });
-
-
-      dots.forEach(dot => dot.classList.remove('team-dot-active'));
-      dots[index].classList.add('team-dot-active');
-
-      currentIndex = index;
-
-      
-
-    }
-    console.log(dots.length, slides.length)
-    function autoScroll() {
-      autoScrollInterval = setInterval(() => {
-        let newIndex = (currentIndex + 1) % slides.length;
-
-        updateCarousel(newIndex)
-      }, 5000);
-    }
-
-    function resetAutoScroll() {
-      clearInterval(autoScrollInterval);
-      autoScroll();
-    }
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        updateCarousel(index);
-        resetAutoScroll();
-      })
-    })
-
     if (window.innerWidth < 700) {
+      function updateCarousel(index) {
+        const slideWidth = slides[0].offsetWidth + 20; // Slide width + gap
+        const offset = slideWidth * index;
+  
+        teamCarousel.scrollTo({
+          left: offset,
+          behavior: 'smooth',
+        });
+  
+  
+        dots.forEach(dot => dot.classList.remove('team-dot-active'));
+        dots[index].classList.add('team-dot-active');
+  
+        currentIndex = index;
+  
+      }
+      function autoScroll() {
+        autoScrollInterval = setInterval(() => {
+          let newIndex = (currentIndex + 1) % slides.length;
+  
+          updateCarousel(newIndex)
+        }, 5000);
+      }
+  
+      function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScroll();
+      }
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          updateCarousel(index);
+          resetAutoScroll();
+        })
+      })
+  
       autoScroll();
     }
 

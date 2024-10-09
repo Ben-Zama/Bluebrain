@@ -1674,7 +1674,7 @@ footer a:hover {
     width: 30%;
   }
 
-  .team-dots-container .teama-dots-container, .teamb-dots-container {
+  .team-dots-container, .teamaabout-dots-container, .teambabout-dots-container {
     display: none;
   }
 
