@@ -161,7 +161,7 @@ const app = Vue.createApp({
         },
         { name: "Abubakar Kolo Ndakpoto",
           role: "Finance and Marketing specialist", 
-          image: "../resources/team/avatar.jpg" 
+          image: "../resources/team/abubakar_ndakpoto.png" 
         },
         { name: "Stanley Nwachukwu",
           role: "Project mangement expert", 
