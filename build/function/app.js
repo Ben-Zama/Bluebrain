@@ -165,7 +165,7 @@ const app = Vue.createApp({
         },
         { name: "Stanley Nwachukwu",
           role: "Project mangement expert", 
-          image: "../resources/team/avatar.jpg" 
+          image: "../resources/team/stanley.png" 
         },
       ],
       mteaml: [
@@ -187,6 +187,10 @@ const app = Vue.createApp({
           role: "Executive chairperson",
           image: "../resources/team/lois.jpg" 
         },
+        { name: "Godswill Egbe",
+          role: "Executive Director - Finance and Operations", 
+          image: "../resources/team/Godswill.jpg" 
+        },
         { name: "Nonso Ogbunamiri",
           role: "Member", 
           image: "../resources/team/nonso.jpg" 
@@ -201,7 +205,7 @@ const app = Vue.createApp({
         },
         { name: "Stephanie Ugochukwu",
           role: "Company Secretary/Legal Adviser", 
-          image: "../resources/team/avatar.jpg" 
+          image: "../resources/team/stephanie.jpg" 
         },
       ],
     }
