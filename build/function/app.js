@@ -195,10 +195,6 @@ const app = Vue.createApp({
           role: "Member", 
           image: "../resources/team/nonso.jpg" 
         },
-        { name: "Prof. Sambo Banake",
-          role: "Member", 
-          image: "../resources/team/avatar.jpg" 
-        },
         { name: "Shayet Gani-Ikilama", 
           role: "Member",
           image: "../resources/team/shayet.jpg" 

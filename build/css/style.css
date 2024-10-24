@@ -1186,10 +1186,6 @@ video {
   cursor: pointer;
 }
 
-.pc-nav-hover:hover {
-  color: #1E90FF;
-}
-
 .pc-nav-hover::after {
   content: "";
   position: absolute;
@@ -1199,6 +1195,10 @@ video {
   border-radius: 5px;
   background-color: #1E90FF;
   transition: 0.25s;
+}
+
+.pc-nav-hover[aria-current="page"]::after {
+  width: 125%;
 }
 
 .pc-nav-hover:hover::after {
