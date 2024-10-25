@@ -11,9 +11,16 @@ hamburger.addEventListener("click", () => {
 
 // active nav link
 
-document.querySelectorAll('.pc-nav-hover').forEach(link => {
-  
-})
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPath = window.location.pathname;
+  console.log(currentPath)
+  document.querySelectorAll('.pc-nav-hover').forEach(link => {
+    if (link.pathname === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+});
+
 
 /* Carousel */
 
