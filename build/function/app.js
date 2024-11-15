@@ -203,6 +203,10 @@ const app = Vue.createApp({
           role: "Company Secretary/Legal Adviser", 
           image: "../resources/team/stephanie.jpg" 
         },
+        { name: "Nkechi M. Chinke",
+          role: "Member", 
+          image: "../resources/team/nkechi.jpg" 
+        },
       ],
     }
   },
